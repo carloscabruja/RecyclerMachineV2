@@ -6,6 +6,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -102,7 +104,7 @@ fun HomeScreen(
 fun Greeting(name: String) {
     Text(
         text = "Welcome $name",
-        style = MaterialTheme.typography.headlineSmall,
+        style = MaterialTheme.typography.headlineMedium,
     )
 }
 
@@ -110,7 +112,10 @@ fun Greeting(name: String) {
 fun BarcodeSection(barcode: String, onClick: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = barcode)
-        Button(onClick = onClick) {
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = onClick
+        ) {
             Text(text = "Scan barcode of bottle")
         }
     }
@@ -123,12 +128,15 @@ fun ImageSection(painter: AsyncImagePainter, onClick: () -> Unit) {
             painter = painter,
             contentDescription = "Image detected",
             modifier = Modifier
-                .size(300.dp)
+                .size(350.dp)
                 .clip(RoundedCornerShape(16.dp)),
             contentScale = ContentScale.Crop
         )
 
-        Button(onClick = onClick) {
+        Button(
+            modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
+            onClick = onClick
+        ) {
             Text(text = "Take a picture")
         }
     }
@@ -137,8 +145,11 @@ fun ImageSection(painter: AsyncImagePainter, onClick: () -> Unit) {
 @Composable
 fun PointsSection(points: Int, onClick: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Points: $points")
-        Button(onClick = onClick) {
+        Text(text = "You have: $points points", style = MaterialTheme.typography.bodyLarge)
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = onClick
+        ) {
             Text(text = "Process...")
         }
     }
@@ -146,7 +157,10 @@ fun PointsSection(points: Int, onClick: () -> Unit) {
 
 @Composable
 fun CloseSession(onClick: () -> Unit) {
-    Button(onClick = onClick) {
+    Button(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = onClick
+    ) {
         Text(text = "Close session")
     }
 }

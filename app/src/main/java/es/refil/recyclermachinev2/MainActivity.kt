@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -107,7 +108,10 @@ fun LoginScreen(
         } else {
             Text(text = state.value.barcodeScanned, style = MaterialTheme.typography.displaySmall)
 
-            Button(onClick = { viewModel.startScanning() }) {
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = { viewModel.startScanning() }
+            ) {
                 Text(text = "Start scanning")
             }
         }

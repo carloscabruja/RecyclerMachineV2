@@ -15,7 +15,7 @@ interface FastApiService {
     suspend fun getUser(@Query("uuid") uuid: String): UserDetailsDto
 
     @Multipart
-    @POST("api/bottle_classify")
+    @POST("api/bottle-classify")
     suspend fun classifyBottle(@Part imageFile: MultipartBody.Part): ImagePredictionDto
 
     @POST("api/bottle")
